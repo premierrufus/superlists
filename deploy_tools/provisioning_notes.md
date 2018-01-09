@@ -16,17 +16,29 @@ eg, on Ubuntu:
 ## Nginx Virtual Host config
 
 * see gunicorn-systemd.template.service
-* replace SITENAME with, e.g., staging.my-domain.com
+* replace DOMAIN with, e.g., staging.my-domain.com
+
+## Systemd service
+
+* see gunicorn-systemd.template.service
+* replace DOMAIN with, e.g., staging.my-domain.com
+* Use this snippet to generate a unique secret key:
+
+python -c"import random; print(''.join(random.SystemRandom().
+choices('abcdefghijklmnopqrstuvwxyz0123456789%^*(-_=+)', k=50)))"
 
 ## Folder Structure:
+
 Assume we have a user account at /home/username
 
 /home/username
 └── sites
-       └── SITENAME
-               ├── database
-               ├── source
-               ├── static
-               └── virtualenv
-    
+    ├── DOMAIN1
+    │        ├── db.sqlite3
+    │        ├── manage.py etc
+    │        ├── static
+    │        └── virtualenv
+    └── DOMAIN2
+              ├── db.sqlite3
+              ├── manage.py etc
 
